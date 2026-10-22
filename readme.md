@@ -12,3 +12,5 @@ model in two files:
 
 Drag the slider; refresh or bookmark the page and the exact state comes
 back. Copy this folder and replace the two files to start your own app.
+
+This remix is based on [vasu2001/sine-starter](https://github.com/vasu2001/sine-starter) by vasu2001, and we're grateful for their original work.
