@@ -4,7 +4,7 @@
 <meta name="fused-app">
 <meta name="fused-api-version" content="1" />
 <meta charset="utf-8" />
-<title>Cosine wave</title>
+<title>Sine and cosine</title>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -76,11 +76,12 @@
       slider.value = String(freq);
       freqValueEl.textContent = freq.toFixed(1);
 
-      const { points } = await fused.runPython("./sine.py", { n: "160", freq: String(freq) });
+      const { sine, cosine } = await fused.runPython("./sine.py", { n: "160", freq: String(freq) });
 
       const axis = `<line x1="${PAD}" y1="${H / 2}" x2="${W - PAD}" y2="${H / 2}" stroke="#3a3d44" />`;
-      const line = `<polyline points="${pointsToPolyline(points)}" fill="none" stroke="#4a9eff" stroke-width="2" />`;
-      svg.innerHTML = axis + line;
+      const sineLine = `<polyline points="${pointsToPolyline(sine)}" fill="none" stroke="#4a9eff" stroke-width="2" />`;
+      const cosineLine = `<polyline points="${pointsToPolyline(cosine)}" fill="none" stroke="#ff8a4a" stroke-width="2" />`;
+      svg.innerHTML = axis + sineLine + cosineLine;
     }
 
     slider.addEventListener("input", () => {
